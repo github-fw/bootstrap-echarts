@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--设置视口的宽度(值为设备的理想宽度)，页面初始缩放值<理想宽度/可见宽度>-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+		<title></title>
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="../js/jquery-3.1.1.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="../js/bootstrap.min.js"></script>
+		<!-- 最新的echarts核心 JavaScript 文件 -->
+		<script src="../js/echarts.js"></script>
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-left">
+					<div class="css_height1" id="left1">
+
+					</div>
+					<div class="css_height" id="left2">
+
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-right">
+					<div class="right_title">
+						<ul class="nav nav-pills">
+							<li class="active">
+								<a href="#right1" data-toggle="pill">1</a>
+							</li>
+							<li>
+								<a href="#right2" data-toggle="pill">2</a>
+							</li>
+							<li>
+								<a href="#" data-toggle="pill">3</a>
+							</li>
+							<li>
+								<a href="#" data-toggle="pill">4</a>
+							</li>
+							<li>
+								<a href="#" data-toggle="pill">5</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="right1">
+							<div class="css_height" id="right11">
+
+							</div>
+							<div class="css_height" id="right12">
+
+							</div>
+						</div>
+						<div class="tab-pane fade in" id="right2">
+							<div class="css_height" id="right21">
+
+							</div>
+							<div class="css_height" id="right22">
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var charts = [];
+	var chart1 = echarts.init(document.getElementById("left1"));
+	var chart2 = echarts.init(document.getElementById("left2"));
+	var chart3 = echarts.init(document.getElementById("right11"));
+	var chart4 = echarts.init(document.getElementById("right12"));
+	var chart5 = echarts.init(document.getElementById("right21"));
+	var chart6 = echarts.init(document.getElementById("right22"));
+	chart1.setOption(option1);
+	chart2.setOption(option1);
+	chart3.setOption(option2);
+	chart4.setOption(option2);
+	chart5.setOption(option1);
+	chart6.setOption(option1);
+	charts.push(chart1);
+	charts.push(chart2);
+	charts.push(chart3);
+	charts.push(chart4);
+	charts.push(chart5);
+	charts.push(chart6);
+	$(window).resize(function() {
+		for(var i = 0; i < charts.length; i++) {
+			charts[i].resize();
+		}
+	});
+	//解决tab切换不显示问题 在加载窗口后重新渲染。
+	$('a[data-toggle="pill"]').on('shown.bs.tab', function(e) {
+		for(var i = 0; i < charts.length; i++) {
+			charts[i].resize();
+		}
+	});
+</script>

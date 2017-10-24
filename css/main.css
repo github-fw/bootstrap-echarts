@@ -1,0 +1,24 @@
+.css_height{
+	height: 400px;
+	margin-top: 30px;
+}
+.css_height1{
+	height: 400px;
+	margin-top: 72px;
+}
+.right_title{
+	width: 90%;
+	margin-left: 10%;
+}
+.nav>li>a{
+	padding: 5px 18px;
+	margin-top: 10px;
+}
+body{
+	background-color:#009688;
+}
+.container{
+	background-color:#dcedf5;
+	margin-top: 25px;
+	border-radius: 15px;
+}
